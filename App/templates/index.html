@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube Downloader</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">YouTube Downloader</h1>
+        <p>BY: <a href="https://github.com/NdAbdulsalaam" target="blanck">Nurudeen Abdulsalaam</a></p>
+        <form method="post" action="{% url 'download' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Download</button>
+        </form>
+    </div>
+</body>
+</html>
