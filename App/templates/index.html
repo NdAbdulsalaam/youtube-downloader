@@ -11,6 +11,7 @@
     <div class="container">
         <h1 class="mt-5">YouTube Downloader</h1>
         <p>BY: <a href="https://github.com/NdAbdulsalaam" target="blanck">Nurudeen Abdulsalaam</a></p>
+        <p>NOTE: Due to the free hosting, you can only download a video of about 1-2 mins</p>
         <form method="post" action="{% url 'download' %}">
             {% csrf_token %}
             {{ form.as_p }}
