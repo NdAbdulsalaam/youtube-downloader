@@ -13,7 +13,7 @@ def stream_video(stream):
     stream.stream_to_buffer(buffer)
     buffer.seek(0)
     while True:
-        data = buffer.read(4 * 1024)  # Read in 4MB chunks
+        data = buffer.read(2 * 1024 * 1024)  # Read in 2MB chunks
         if not data:
             break
         yield data
@@ -26,12 +26,11 @@ def download(request):
             try:
                 yt = YouTube(url)
                 stream = yt.streams.filter(progressive=True, file_extension='mp4').first()
-                response = StreamingHttpResponse(
+                return StreamingHttpResponse(
                     stream_video(stream),
                     content_type='video/mp4',
                     headers={'Content-Disposition': f'attachment; filename="{yt.title}.mp4"'}
                 )
-                return response
             except Exception as e:
                 return HttpResponse(f"An error occurred: {str(e)}", status=500)
     return redirect('index')
