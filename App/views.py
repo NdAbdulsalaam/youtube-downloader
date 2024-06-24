@@ -13,7 +13,7 @@ def stream_video(stream):
     stream.stream_to_buffer(buffer)
     buffer.seek(0)
     while True:
-        data = buffer.read(4 * 1024 * 1024)  # Read in 4MB chunks
+        data = buffer.read(4 * 1024)  # Read in 4MB chunks
         if not data:
             break
         yield data
